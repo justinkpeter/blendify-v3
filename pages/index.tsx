@@ -1,9 +1,14 @@
-import { Login } from '@/components/Login'
+import {signOut, useSession} from "next-auth/react";
 
 export default function Home() {
-  return (
-    <main>
-      <Login />
-    </main>
-  )
+
+        const { data: session, status } = useSession()
+        console.log(session, status)
+      return (
+        <main>
+
+            <button onClick={()=> signOut()}> LOG OUT </button>
+          {/*<Login />*/}
+        </main>
+      )
 }
