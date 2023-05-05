@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef }from 'react';
+import {getProviders, signIn} from "next-auth/react";
 import * as THREE from 'three';
 import WAVES from 'vanta/dist/vanta.waves.min';
-import {getProviders, signIn} from "next-auth/react";
+import Image from 'next/image'
 
 export default function Login({providers}:any) {
 
@@ -9,7 +10,6 @@ export default function Login({providers}:any) {
     const vantaRef = useRef(null);
 
     useEffect(() => {
-        // if(typeof window !== 'undefined') return
         if (!vantaEffect) {
             setVantaEffect(
                 WAVES({
@@ -42,10 +42,11 @@ export default function Login({providers}:any) {
                     </div>
                     <div className={"flex mt-16"}>
                         <button
-                            className={"p-6 w-64 rounded-full bg-green-500 font-bold transition hover:bg-green-800"}
+                            className={"py-6 px-12 w-fit rounded-full bg-green-500 font-medium transition text-lg hover:bg-green-800 flex items-center gap-4"}
                             onClick={() => signIn(providers.spotify.id, { callbackUrl: '/'})}
                         >
-                            Continue with Spotify
+                            <Image src={'/assets/logo/Spotify_Icon_RGB_White.png'} alt={'Spotify'} width={30} height={30}/>
+                            <span> Continue with Spotify </span>
                         </button>
                     </div>
                 </div>
