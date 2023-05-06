@@ -5,6 +5,7 @@ import {SessionProvider} from "next-auth/react";
 
 const inter = Inter({ subsets: ['latin'] })
 export default function App({ Component, pageProps: { session, ...pageProps} }: AppProps) {
+
     return(
         <SessionProvider  session={session}>
           <div className={`${inter.className}`}>
@@ -12,4 +13,5 @@ export default function App({ Component, pageProps: { session, ...pageProps} }: 
           </div>
         </SessionProvider>
   )
+
 }
