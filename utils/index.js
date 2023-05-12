@@ -37,11 +37,6 @@ export async function initTransition() {
 
     const openItem = (item) => {
 
-        console.log('opening item')
-        // disable horizontal locomotive scroll
-        // console.log("frame", frameEl);
-        // console.log("console", console);
-
         // disable document scroll
         document.body.style.overflow = "hidden";
 

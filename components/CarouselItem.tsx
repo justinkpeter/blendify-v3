@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from "react";
-export const CarouselItem = ({item}) => {
+export const CarouselItem = ({item}:any) => {
     return (
         <>
             {/*<div className="carousel-item h-fit relative">*/}
@@ -26,7 +26,7 @@ export const CarouselItem = ({item}) => {
                     {/*{ render artists  }*/}
 
                     <div className={'flex flex-wrap gap-1'}>
-                        { item?.artists?.map((artist, index) => {
+                        { item?.artists?.map((artist:any, index:any) => {
                             return (
                                 <div className={'text-white/60'} key={artist.id}> {artist.name} </div>
                             )

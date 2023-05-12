@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const GithubIcon = ({link}) => {
+const GithubIcon = ({link}:{link:string}) => {
     return(
         <>
             <Link
@@ -15,7 +15,7 @@ const GithubIcon = ({link}) => {
     )
 }
 
-const TwitterIcon = ({link}) => {
+const TwitterIcon = ({link}:{link:string}) => {
     return(
         <>
             <Link
@@ -29,7 +29,7 @@ const TwitterIcon = ({link}) => {
     )
 }
 
-const InstagramIcon = ({link}) => {
+const InstagramIcon = ({link}:{link:string}) => {
     return(
         <>
             <Link
@@ -47,7 +47,7 @@ export const SayHi = () => {
     return (
         <>
             <div className={'ml-[25vw] h-screen w-screen  flex items-center relative'}>
-                <div className={'w-[45vw] 2xl:w-[25vw] relative ml-24'}>
+                <div className={'w-[45vw] 2xl:w-[35vw] relative ml-24'}>
                     <h1 className={'my-5 font-bold text-white text-[5vw]'}>
                             <span className={'inline-block lg:pr-[5vh] leading-[5rem] 2xl:leading-[8rem] uppercase italic'}>
                                 <span> Meet the </span><br/>
@@ -64,7 +64,7 @@ export const SayHi = () => {
                                     </Link>
                                 </span>
                                 <span className={'mx-1.5  cursor-pointer'}>
-                                    <Link className={'text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-teal-100 hover:to-blue-600'} href={'https://tailwindcss.com//'} rel="noopener noreferrer" target="_blank">
+                                    <Link className={'text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-teal-100 hover:to-blue-600'} href={'https://tailwindcss.com/'} rel="noopener noreferrer" target="_blank">
                                         TailwindCSS,
                                     </Link>
                                 </span>
@@ -78,7 +78,7 @@ export const SayHi = () => {
                             </span>
                     </p>
                 </div>
-                <div className={'bg-green-200  w-[25vw] 2xl:w-[15vw] h-[35vw] 2xl:h-[20vw] rounded-3xl relative '}>
+                <div className={'2xl:mx-28 w-[25vw] 2xl:w-[15vw] h-[35vw] 2xl:h-[20vw] rounded-3xl relative '}>
                     <img src={'/assets/img/portrait.webp'} alt={'hi'} className={'absolute w-full h-full object-cover rounded-3xl'}/>
                     <div className={'absolute bottom-16 flex flex-col w-full items-center  gap-4  '}>
                         <div className={'text-4xl text-white font-medium tracking-tight'}> Justin Peter </div>

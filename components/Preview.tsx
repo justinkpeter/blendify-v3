@@ -31,8 +31,10 @@ export const Preview = () => {
     const [artistMetaData, setArtistMetaData] = useState({
         topTracks: [],
         relatedArtists: [],
-        albums: [],
-        followers: null
+        albums: [{
+            release_date: null,
+        }],
+        followers: null,
     })
 
     const [trackMetaData, setTrackMetaData] = useState({
@@ -41,6 +43,12 @@ export const Preview = () => {
         artists: [],
         duration: null,
         popularity: 0,
+        danceability: null,
+        energy: null,
+        loudness: null,
+        speechiness: null,
+        valence: null,
+        tempo: null,
         releaseDate: null,
         explicit: null,
         relatedTracks: [],
@@ -48,6 +56,7 @@ export const Preview = () => {
 
     useEffect(() => {
         if (spotifyApi.getAccessToken() && itemSelected === 'artist'){
+            // @ts-ignore
             spotifyApi.getArtist(artist?.id).then((data) => {
                 setArtistMetaData((prevMetaData) => ({
                     ...prevMetaData,
@@ -55,6 +64,7 @@ export const Preview = () => {
                 }));
             });
 
+            // @ts-ignore
             spotifyApi.getArtistTopTracks(artist?.id, 'US').then((data) => {
                 setArtistMetaData((prevMetaData) => ({
                     ...prevMetaData,
@@ -62,13 +72,15 @@ export const Preview = () => {
                 }));
             });
 
+            // @ts-ignore
             spotifyApi.getArtistRelatedArtists(artist?.id).then((data) => {
                 setArtistMetaData((prevMetaData) => ({
                     ...prevMetaData,
                     relatedArtists: data.body.artists
                 }));
-            });
+            });// @ts-ignore
 
+            // @ts-ignore
             spotifyApi.getArtistAlbums(artist?.id).then((data) => {
                 setArtistMetaData((prevMetaData) => ({
                     ...prevMetaData,
@@ -79,15 +91,19 @@ export const Preview = () => {
 
         if(spotifyApi.getAccessToken() && itemSelected === 'track'){
             // iterate thru each artist  on the track  and get their genres
+            // @ts-ignore
             const artists = track?.artists.map((artist) => artist.id)
+            // @ts-ignore
             spotifyApi.getArtists(artists).then((data) => {
                 // get the genres of each artist
+                // @ts-ignore
                 const genres = data.body.artists.map((artist) => artist.genres)
                 // get the popularity of the first artist
                 const popularity = data.body.artists[0].popularity
                 // flatten the array of arrays
                 const flattenedGenres = [].concat.apply([], genres)
                 // get the unique genres
+                // @ts-ignore
                 const uniqueGenres = [...new Set(flattenedGenres)]
                 // set the genres
                 // @ts-ignore
@@ -95,10 +111,12 @@ export const Preview = () => {
                     ...prevMetaData,
                     genres: uniqueGenres,
                     popularity: popularity,
+                    // @ts-ignore
                     releaseDate: track?.album?.release_date,
                 }));
 
                 //get audio features for the track
+                // @ts-ignore
                 spotifyApi.getAudioFeaturesForTrack(track?.id).then((data) => {
                     setTrackMetaData((prevMetaData) => ({
                         ...prevMetaData,
@@ -114,12 +132,14 @@ export const Preview = () => {
                 });
 
                 // get related tracks
+                // @ts-ignore
                 spotifyApi.getRecommendations({
                     seed_artists: artists,
                     seed_genres: uniqueGenres,
+                    // @ts-ignore
                     seed_tracks: track?.id,
                     limit: 10,
-                }).then((data) => {
+                }).then((data:any) => {
                     setArtistMetaData((prevMetaData) => ({
                         ...prevMetaData,
                         relatedTracks: data.body.tracks
@@ -131,15 +151,17 @@ export const Preview = () => {
 
     }, [artist, track, itemSelected])
 
-    const handlePreviewUri = (e) => {
+    const handlePreviewUri = (e:any) => {
         e.preventDefault()
+        // @ts-ignore
         if(itemSelected === 'artist') window.open(artist?.uri)
+        // @ts-ignore
         else if(itemSelected === 'track') window.open(track?.uri)
     }
 
 
 
-
+    // @ts-ignore
     return(
         <>
             <section className="previews">
@@ -148,14 +170,13 @@ export const Preview = () => {
                         {/* image and link */}
                         <div className={'relative flex flex-col sticky top-0'}>
                             <div className="preview__img">
+                                {/* @ts-ignore */}
                                 <div
                                     className="preview__img-inner drop-shadow-2xl"
-                                    // style={{backgroundImage:
-                                    //         `url(${artist?.images && artist.images[0]?.url || +
-                                    //         track?.album?.images[0]?.url || ''})`}}>
                                     style={{backgroundImage:
+
                                             `url(${itemSelected === "artist" ? 
-                                                artist?.images && artist.images[0]?.url : 
+                                                artist.images[0]?.url || '' : 
                                                 track?.album?.images[0]?.url || ''})`}}>
                                 </div>
                             </div>

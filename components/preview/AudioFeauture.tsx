@@ -1,10 +1,6 @@
 import React, {useEffect} from "react";
 
-export const AudioFeature = ({feature, value, Icon}) => {
-
-    useEffect(() =>{
-        console.log('feature', value)
-    }, [value])
+export const AudioFeature = ({feature, value, Icon}: {feature:any, value:any, Icon:any}) => {
 
     return (
         <>

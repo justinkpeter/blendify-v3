@@ -11,12 +11,16 @@ export const FavoriteTracks = () => {
 
     const spotifyApi = useSpotify()
     const {data: session} = useSession()
-    const [topTracks, setTopTracks] = useState([])
+    const [topTracks, setTopTracks] = useState([{
+        name:'', artists:[
+            {name:'', images:[{url:''}]},
+        ],
+    }])
     const [sectionWidth, setSectionWidth] = useState(0)
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
-            spotifyApi.getMyTopTracks({limit: 5,time_range:'short_term'}).then((data) => {
+            spotifyApi.getMyTopTracks({limit: 5,time_range:'short_term'}).then((data:any) => {
                 setTopTracks(data.body.items)
             })
         }
@@ -29,11 +33,13 @@ export const FavoriteTracks = () => {
     }, [topTracks])
 
     useEffect(() => {
-        if( typeof window !== 'undefined') {
-            setSectionWidth(document.querySelector('.favorite-artists').clientWidth)
+        if (typeof window !== 'undefined') {
+            const favoriteTracksElement = document.querySelector('.favorite-tracks');
+            if (!favoriteTracksElement) return;
 
+            setSectionWidth(favoriteTracksElement.clientWidth);
         }
-    }, [sectionWidth])
+    }, [sectionWidth]);
 
 
     return (

@@ -9,12 +9,14 @@ import {SectionTitle} from "@/components/stats/SectionTitle";
 export const FavoriteArtists = () => {
     const spotifyApi = useSpotify()
     const {data: session} = useSession()
-    const [topArtists, setTopArtists] = useState([])
+    const [topArtists, setTopArtists] = useState([{
+        name:'', images:[{url:''}],
+    }])
     const [sectionWidth, setSectionWidth] = useState(0)
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
-            spotifyApi.getMyTopArtists({limit: 5, time_range: 'short_term'}).then((data) => {
+            spotifyApi.getMyTopArtists({limit: 5, time_range: 'short_term'}).then((data:any) => {
                 setTopArtists(data.body.items)
             })
         }
@@ -27,11 +29,13 @@ export const FavoriteArtists = () => {
     }, [topArtists])
 
     useEffect(() => {
-        if( typeof window !== 'undefined') {
-            setSectionWidth(document.querySelector('.favorite-artists').clientWidth)
+        if (typeof window !== 'undefined') {
+            const favoriteArtistsElement = document.querySelector('.favorite-artists');
+            if (!favoriteArtistsElement) return;
 
+            setSectionWidth(favoriteArtistsElement.clientWidth);
         }
-    }, [sectionWidth])
+    }, [sectionWidth]);
 
 
     return (

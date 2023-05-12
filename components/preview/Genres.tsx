@@ -1,5 +1,5 @@
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
-export const Genres = ({data}) => {
+export const Genres = ({data}:{data:string[]}) => {
     return (
         <>
             <div className={'oh flex flex-wrap gap-2 mt-4 w-full'}>

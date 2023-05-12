@@ -7,5 +7,17 @@ export const artistIdState = atom({
 
 export const artistState = atom({
     key: 'artistState',
-    default: 'random'
+    default: {
+        id: null,
+        name: null,
+        images: [{
+            url: '',
+        }],
+        genres: [],
+        popularity: null,
+        followers: {
+            total: null,
+        }
+
+    }
 })

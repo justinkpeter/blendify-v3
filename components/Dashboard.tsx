@@ -1,15 +1,13 @@
-import React, { useRef, useState, useLayoutEffect, useCallback, forwardRef } from "react";
+import React, {useRef, useState, useLayoutEffect, useCallback, forwardRef, ReactNode, CSSProperties} from "react";
 import ResizeObserver from "resize-observer-polyfill"
 import { motion, useTransform, useSpring, useScroll} from "framer-motion"
 import {Navbar} from "@/components/Navbar";
-import { useRecoilValue} from "recoil";
-import { artistIdState } from "@/atoms/artistAtom";
 import {Footer} from "@/components/Footer";
 import { Preview } from "@/components/Preview";
 import { Overlay } from "@/components/Overlay";
 
 
-const ScrollContainer = ({ children }) => {
+const ScrollContainer = ({ children }:any) => {
     return(
         <div className={'fixed w-screen left-0 right-0 will-change-transform bg-zinc-900'}>
             {children}
@@ -17,7 +15,7 @@ const ScrollContainer = ({ children }) => {
     )
 }
 
-const SectionContainer = forwardRef<HTMLDivElement, { style?: React.CSSProperties }>(({ children, style }, ref) => {
+const SectionContainer = forwardRef<HTMLDivElement, { style?: CSSProperties; children?: ReactNode }>(({ children, style }, ref) => {
     return(
         <motion.div className={'scroll-container fixed h-screen max-w-fit flex items-center scrollbar-hide '} ref={ref} style={style}>
             {children}
@@ -29,7 +27,7 @@ SectionContainer.displayName = 'SectionContainer';
 
 
 
-const Sections = ({ children }) => {
+const Sections = ({ children }:any) => {
     return(
         <div className={'relative w-full flex bg-zinc-900'}>
             {children}
@@ -38,18 +36,19 @@ const Sections = ({ children }) => {
 }
 
 
-export const Dashboard = ({children}) => {
+export const Dashboard = ({children}:any) => {
 
-    const scrollRef = useRef(null)
-    const ghostRef = useRef(null)
+    const scrollRef = useRef<HTMLDivElement>(null)
+    const ghostRef = useRef<HTMLDivElement>(null)
     const [scrollRange, setScrollRange] = useState(0)
     const [viewportWidth, setViewportWidth] = useState(0)
 
     useLayoutEffect(() => {
-        scrollRef && setScrollRange(scrollRef.current.scrollWidth);
+        if (!scrollRef || !scrollRef.current) return;
+        setScrollRange(scrollRef.current.scrollWidth);
     }, [scrollRef, children]);
 
-    const onResize = useCallback((entries) => {
+    const onResize = useCallback((entries: ResizeObserverEntry[]) => {
         for (let entry of entries) {
             setViewportWidth(entry.contentRect.width);
         }
@@ -57,7 +56,10 @@ export const Dashboard = ({children}) => {
 
     useLayoutEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => onResize(entries));
-        resizeObserver.observe(ghostRef.current);
+        if (ghostRef.current) {
+            resizeObserver.observe(ghostRef.current);
+        }
+
         return () => resizeObserver.disconnect();
     }, [onResize]);
 
@@ -75,7 +77,8 @@ export const Dashboard = ({children}) => {
         <>
             <ScrollContainer>
                 <Navbar/>
-                <SectionContainer ref={scrollRef} style={{x:spring}}>
+                {/* @ts-ignore */}
+                <SectionContainer ref={scrollRef} style={{ x:spring }}>
                     <Sections> {children} </Sections>
                 </SectionContainer>
                 <Footer/>
@@ -83,7 +86,7 @@ export const Dashboard = ({children}) => {
                 <Preview/>
 
             </ScrollContainer>
-            <div ref={ghostRef} style={{ height: scrollRange }} className={'w-screen'} />
+            <div ref={ghostRef} style={{ height: scrollRange }} className={'w-screen h-screen'} />
 
             {/*<Footer/>*/}
 

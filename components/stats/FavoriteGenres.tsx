@@ -2,7 +2,13 @@ import useSpotify from "@/utils/useSpotify";
 import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
 
-const GenreBar = ({percentage, color, name}) => {
+interface GenreBarProps {
+    percentage: number;
+    color: string;
+    name: string;
+}
+
+const GenreBar = ({percentage, color, name}:GenreBarProps) => {
     return (
         <>
             <div className={'relative w-[10vh] h-full text-xl top-[5vh]'}>
@@ -23,16 +29,17 @@ const GenreBar = ({percentage, color, name}) => {
 export const FavoriteGenres = () => {
     const spotifyApi = useSpotify()
     const {data: session} = useSession()
-    const shortTermTopGenres = []
-    const genreFrequency = {}
-    const [topGenres, setTopGenres] = useState([])
+    const shortTermTopGenres:any[] = []
+    const genreFrequency: { [key: string]: number } = {};
+    const [topGenres, setTopGenres] = useState<{ name: string; percentage: number }[]>([]);
+
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
-            spotifyApi.getMyTopArtists({limit: 50, time_range:'short_term'}).then((data) => {
+            spotifyApi.getMyTopArtists({limit: 50, time_range:'short_term'}).then((data:any) => {
                 // iterate through each artist and extract their genres
-                data.body.items.forEach((artist) => {
-                    artist.genres.forEach((genre) => {
+                data.body.items.forEach((artist:any) => {
+                    artist.genres.forEach((genre:any) => {
                         shortTermTopGenres.push(genre)
                     })
                 })
@@ -59,7 +66,8 @@ export const FavoriteGenres = () => {
                 })
 
                 // iterate through each genre and create an object with the genre name and percentage, then store it in an array
-                const topGenresArray = []
+                const topGenresArray: { name: string; percentage: number }[] = [];
+
                 Object.keys(sortedGenresObject).forEach((key) => {
                     topGenresArray.push({name: key, percentage: sortedGenresObject[key]})
                 })

@@ -2,7 +2,12 @@ import styles from "@/styles/Item.module.css";
 import {motion, useScroll, useSpring, useTransform} from "framer-motion";
 import {useRef} from "react";
 
-export const SectionTitle = ({title, sectionWidth}) => {
+interface SectionTitleProps {
+    title: string;
+    sectionWidth: number;
+}
+
+export const SectionTitle = ({title, sectionWidth}:SectionTitleProps) => {
 
     const scrollRef = useRef(null)
     const { scrollYProgress } = useScroll({

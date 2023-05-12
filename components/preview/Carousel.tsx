@@ -2,8 +2,7 @@ import React, {useEffect} from "react";
 import {CarouselItem} from "@/components/CarouselItem";
 import { useState } from "react";
 import {ArrowLongLeftIcon, ArrowLongRightIcon} from "@heroicons/react/24/solid";
-
-export const Carousel = ({data, title, id}) => {
+export const Carousel = ({data, title, id}: { data: any[], title: string, id: string }) => {
 
     function scrollCarousel(direction:string) {
         // direction is either 'left' or 'right'
@@ -25,13 +24,13 @@ export const Carousel = ({data, title, id}) => {
 
     const [color, setColor] = useState(colorVariants['gray']);
 
-    const handleScrollLeft = (e) => {
+    const handleScrollLeft = (e:any) => {
         e.preventDefault();
         scrollCarousel( 'left');
         setColor(colorVariants['gray'])
     };
 
-    const handleScrollRight = (e) => {
+    const handleScrollRight = (e:any) => {
         e.preventDefault();
         scrollCarousel('right');
         setColor(colorVariants['white'])

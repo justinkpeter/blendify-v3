@@ -7,5 +7,13 @@ import { atom } from 'recoil';
 
 export const trackState = atom({
     key: 'trackState',
-    default: 'random'
+    default: {
+        id: null,
+        name: null,
+        album: {
+            images: [{
+                url: '',
+            }],
+        }
+    }
 })

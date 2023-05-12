@@ -51,7 +51,7 @@ export const Navbar = () => {
     const [isMuted, setIsMuted] = useState(false)
 
 
-    const fullScreen =(e) =>{
+    const fullScreen =(e:any) =>{
         e.preventDefault()
 
         if(isFullscreen) {
@@ -69,7 +69,7 @@ export const Navbar = () => {
 
     }
 
-    const handleMute = (e) => {
+    const handleMute = (e:any) => {
         e.preventDefault()
         // mute playable media
         setIsMuted(!isMuted)
@@ -99,7 +99,7 @@ export const Navbar = () => {
                            className={'flex space-x-3 opacity-90 hover:opacity-80 items-center text-white bg-black/30 cursor-pointer rounded-full p-1 pr-4'}>
                            <img
                                className={'rounded-full w-12 h-12 object-cover'}
-                               src={session?.user?.image}
+                               src={session?.user?.image || ''}
                                alt=""/>
                            <h2> { session?.user?.name }</h2>
                            <div className="arrow w-fit " style={{ transformOrigin: "50% 55%" }}>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const StatCard = ({title, value, Icon}) => {
+export const StatCard = ({title, value, Icon}: {title:string, value:any, Icon:any}) => {
     return (
         <>
             <div className={'inline-flex items-center bg-black/30 mb-4 px-6 py-4 mr-2 rounded-2xl overflow-hidden group gap-3'}>
