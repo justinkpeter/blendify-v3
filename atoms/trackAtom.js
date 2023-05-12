@@ -10,6 +10,10 @@ export const trackState = atom({
     default: {
         id: null,
         name: null,
+        images: [{
+            url: '',
+        }],
+
         album: {
             images: [{
                 url: '',
