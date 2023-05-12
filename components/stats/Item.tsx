@@ -17,7 +17,7 @@ export const ArtistItem = ({data, rank}:ItemProps) => {
 
     useEffect(() => {
         // get artist top track
-        if(data) {
+        if(data && spotifyApi.getAccessToken()) {
             spotifyApi.getArtistTopTracks(data.id, 'US').then((data:any) => {
                 setTopTrackPreview(data.body.tracks[0].preview_url)
             })
@@ -43,9 +43,6 @@ export const ArtistItem = ({data, rank}:ItemProps) => {
         pauseLivePreview(data?.id)
     }
 
-
-
-    // console.log('data', data)
     return (
         <>
             <figure className={"gallery__item item__view-more"} onClick={handleClick}>
@@ -59,12 +56,6 @@ export const ArtistItem = ({data, rank}:ItemProps) => {
                     <span className={"gallery__item-number"} style={{WebkitTextStrokeColor: 'white'}}>
                         {rank}
                     </span>
-                    {/*<p className={styles["tags"]}>*/}
-                    {/*    <span>#house</span>*/}
-                    {/*    <span>#green</span>*/}
-                    {/*    <span>#chair</span>*/}
-                    {/*</p>*/}
-                    {/*<a className={styles["gallery__item-link"]}>see more</a>*/}
                 </figcaption>
                 <div className={'absolute w-full h-full pointer-events-none'}>
                     <audio id={data?.id} preload="none" src={topTrackPreview} ></audio>
@@ -74,12 +65,11 @@ export const ArtistItem = ({data, rank}:ItemProps) => {
     )
 }
 
-
-
-
 export const TrackItem = ({data,rank}:ItemProps) => {
     const [track, setTrack] = useRecoilState(trackState)
     const [itemSelected, setItemSelected] = useRecoilState(itemSelectedState)
+    const [previewImg, setPreviewImg] = useState('')
+
     const handleClick = (e:any) => {
         e.preventDefault()
         // @ts-ignore
@@ -97,6 +87,12 @@ export const TrackItem = ({data,rank}:ItemProps) => {
         pauseLivePreview(data?.id)
     }
 
+    useEffect(()=>{
+        if(data) {
+            setPreviewImg(data?.album?.images[0]?.url ?? '')
+        }
+    }, [data])
+
 
     return (
         <>
@@ -104,12 +100,13 @@ export const TrackItem = ({data,rank}:ItemProps) => {
                 <div className={'gallery__item-img'}>
                     <div className={"gallery__item-imginner"}
                          onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-                         style={{backgroundImage: `url(${data?.images && data.images[0]?.url || ''}`}}/>
+                         style={{backgroundImage: `url(${previewImg}`}}
+                    />
                 </div>
                 <figcaption className={"gallery__item-caption"}>
 
                     <h2 className={"gallery__item-title"} >{data?.name ?? ''}</h2>
-                    <div className={'mt-20 pt-2.5 -ml-16 text-white/60'}>
+                    <div className={'mt-20 2xl:mt-24 pt-2.5 -ml-16 text-white/60'}>
                         { data?.artists?.map((artist:any, index:any) => {
                             const isLastArtist = index === data.artists.length - 1;
                             const comma = isLastArtist ? '' : ', ';

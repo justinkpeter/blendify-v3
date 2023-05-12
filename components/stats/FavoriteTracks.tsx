@@ -65,15 +65,12 @@ export const FavoriteTracks = () => {
                         </p>
                     </div>
                 </div>
-
-
                 <div className={'w-fit h-full flex items-center'}>
                     <TrackItem data={topTracks[0]} rank={1} />
                     <TrackItem data={topTracks[1]} rank={2} />
                     <TrackItem data={topTracks[2]} rank={3} />
                     <TrackItem data={topTracks[3]} rank={4} />
                     <TrackItem data={topTracks[4]} rank={5} />
-
                 </div>
             </div>
         </>
