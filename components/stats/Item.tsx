@@ -1,10 +1,10 @@
-import {useRecoilState} from "recoil";
-import {artistIdState, artistState} from "@/atoms/artistAtom";
+import { useRecoilState } from "recoil";
+import { artistState } from "@/atoms/artistAtom";
 import { trackState } from "@/atoms/trackAtom";
 import { itemSelectedState } from "@/atoms/itemAtom";
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import spotifyApi from "@/lib/spotify";
-import {pauseLivePreview, playLivePreview} from "@/utils/functions";
+import { pauseLivePreview, playLivePreview } from "@/utils/functions";
 interface ItemProps {
     data: any;
     rank: number;

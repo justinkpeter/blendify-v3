@@ -86,13 +86,12 @@ export function getArtistAlbumSingleCount(related_releases) {
 
 }
 
-export function playLivePreview(id){
-    const audio = document.getElementById(id)
-    if(!audio){
+export function playLivePreview(id) {
+    const audio = document.getElementById(id);
+    if (!audio) {
         return;
-    }
-    else{
-        try{
+    } else {
+        try {
             audio.volume = 0;
             audio.play();
             const fade = setInterval(() => {
@@ -102,31 +101,31 @@ export function playLivePreview(id){
                     clearInterval(fade);
                 }
             }, 70);
-        }catch(err){
-            console.log(err)
-            console.log( audio)
+        } catch (err) {
+            console.log(err);
+            console.log(audio);
         }
-
     }
 }
 
-export function pauseLivePreview(id){
-    const audio = document.getElementById(id )
-    if(!audio){
+
+export function pauseLivePreview(id) {
+    const audio = document.getElementById(id);
+    if (!audio) {
         return;
-    }
-    else{
+    } else {
         const fade = setInterval(() => {
             if (audio.volume > 0.01) {
                 audio.volume -= 0.01;
             } else {
                 clearInterval(fade);
-                if(audio){
+                if (audio) {
                     audio.pause();
                 }
             }
         }, 15);
     }
 }
+
 
 

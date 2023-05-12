@@ -145,7 +145,7 @@ body {
 .gallery__item-title {
   grid-area: gallery-title;
   margin: 0;
-  font-size: 4rem;
+  /*font-size: 4rem;*/
   /*font-size: clamp(2rem,5vw,4rem);*/
   font-size:3vw;
   mix-blend-mode: difference;
@@ -172,7 +172,7 @@ body {
   align-self: end;
   font-size: 1.5rem;
   background: blue;
-  color: var(--color-gallery-link);
+  /*color: var(--color-gallery-link);*/
   text-decoration: underline;
   width: 120px;
   height: 120px;
@@ -186,8 +186,8 @@ body {
 
 .gallery__item-link:focus,
 .gallery__item-link:hover {
-  background: var(--color-gallery-link-bg-hover);
-  color: var(--color-gallery-link-hover);
+  /*background: var(--color-gallery-link-bg-hover);*/
+  /*color: var(--color-gallery-link-hover);*/
   text-decoration: none;
 }
 
@@ -426,7 +426,7 @@ a:not(.frame__title-back):not(.item__link):not(.preview__uri):not(.social__icon)
   position: absolute;
   top: 92%;
   transition: transform 0.3s;
-  transform-origin: 0% 50%;
+  transform-origin: 0 50%;
 }
 
 a:not(.frame__title-back):not(.item__link):hover::before {
@@ -620,7 +620,7 @@ a:focus-visible {
 }
 
 .overlay__row:first-child {
-  transform-origin: 50% 0%;
+  transform-origin: 50% 0;
 }
 
 .overlay__row:last-child {

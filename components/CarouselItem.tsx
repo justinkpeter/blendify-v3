@@ -26,7 +26,7 @@ export const CarouselItem = ({item}:any) => {
                     {/*{ render artists  }*/}
 
                     <div className={'flex flex-wrap gap-1'}>
-                        { item?.artists?.map((artist:any, index:any) => {
+                        { item?.artists?.map((artist:any) => {
                             return (
                                 <div className={'text-white/60'} key={artist.id}> {artist.name} </div>
                             )

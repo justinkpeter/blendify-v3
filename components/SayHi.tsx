@@ -49,33 +49,33 @@ export const SayHi = () => {
             <div className={'ml-[25vw] h-screen w-screen  flex items-center relative'}>
                 <div className={'w-[45vw] 2xl:w-[35vw] relative ml-24'}>
                     <h1 className={'my-5 font-bold text-white text-[5vw]'}>
-                            <span className={'inline-block lg:pr-[5vh] leading-[5rem] 2xl:leading-[8rem] uppercase italic'}>
-                                <span> Meet the </span><br/>
-                                <span className={'break-normal bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-fuchsia-600'}> creator </span>
-                                <br/>
-                             </span>
+                        <span className={'inline-block lg:pr-[5vh] leading-[5rem] 2xl:leading-[8rem] uppercase italic'}>
+                            <span> Meet the </span><br/>
+                            <span className={'break-normal bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-fuchsia-600'}> creator </span>
+                            <br/>
+                         </span>
                     </h1>
                     <p className={'font-light text-2xl 2xl:text-4xl text-gray-100 pr-[10vh]'}>
-                            <span className={'inline-block leading-[3rem]'}>
-                                 You've reached the end of this experience. Shoutout to
-                                <span className={'mx-1.5 cursor-pointer'}>
-                                    <Link className={'text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-300'} href={'https://nextjs.org/'} rel="noopener noreferrer" target="_blank">
-                                        Next.js,
-                                    </Link>
-                                </span>
-                                <span className={'mx-1.5  cursor-pointer'}>
-                                    <Link className={'text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-teal-100 hover:to-blue-600'} href={'https://tailwindcss.com/'} rel="noopener noreferrer" target="_blank">
-                                        TailwindCSS,
-                                    </Link>
-                                </span>
-                                and of course,
-                                <span className={'mx-1.5 cursor-pointer '}>
-                                    <Link className={'text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-green-400 hover:to-green-700'} href={'https://developer.spotify.com/'} rel="noopener noreferrer" target="_blank">
-                                        Spotify API,
-                                    </Link>
-                                </span> for making this possible.
-                                Made wth love from Texas, USA.
+                        <span className={'inline-block leading-[3rem]'}>
+                             You've reached the end of this experience. Shoutout to
+                            <span className={'mx-1.5 cursor-pointer'}>
+                                <Link className={'text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-300'} href={'https://nextjs.org/'} rel="noopener noreferrer" target="_blank">
+                                    Next.js,
+                                </Link>
                             </span>
+                            <span className={'mx-1.5  cursor-pointer'}>
+                                <Link className={'text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-teal-100 hover:to-blue-600'} href={'https://tailwindcss.com/'} rel="noopener noreferrer" target="_blank">
+                                    TailwindCSS,
+                                </Link>
+                            </span>
+                            and of course,
+                            <span className={'mx-1.5 cursor-pointer '}>
+                                <Link className={'text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-green-400 hover:to-green-700'} href={'https://developer.spotify.com/'} rel="noopener noreferrer" target="_blank">
+                                    Spotify API,
+                                </Link>
+                            </span> for making this possible.
+                            Made wth love from Texas, USA.
+                        </span>
                     </p>
                 </div>
                 <div className={'2xl:mx-28 w-[25vw] 2xl:w-[15vw] h-[35vw] 2xl:h-[20vw] rounded-3xl relative '}>
@@ -89,10 +89,6 @@ export const SayHi = () => {
                         </div>
 
                     </div>
-
-                    {/*<Image src={'/assets/icons/instagram.svg'} alt={'github'} className={'w-1/2 h-1/2 absolute bottom-0 right-0'} width={36} height={36}/>*/}
-
-
                 </div>
             </div>
         </>

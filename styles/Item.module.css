@@ -107,7 +107,7 @@
     /*font-size: 4rem;*/
     /*font-size: clamp(2rem,5vw,4rem);*/
     font-size: clamp(2rem);
-    color: var(--color-gallery-title);
+    /*color: var(--color-gallery-title);*/
 }
 
 .gallery__item-number,
@@ -126,7 +126,7 @@
     align-self: end;
     font-size: 1.5rem;
     background: blue;
-    color: var(--color-gallery-link);
+    /*color: var(--color-gallery-link);*/
     text-decoration: underline;
     width: 120px;
     height: 120px;
@@ -140,8 +140,8 @@
 
 .gallery__item-link:focus,
 .gallery__item-link:hover {
-    background: var(--color-gallery-link-bg-hover);
-    color: var(--color-gallery-link-hover);
+    /*background: var(--color-gallery-link-bg-hover);*/
+    /*color: var(--color-gallery-link-hover);*/
     text-decoration: none;
 }
 

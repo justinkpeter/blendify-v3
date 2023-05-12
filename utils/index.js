@@ -28,7 +28,6 @@ export async function initTransition() {
     const items = [];
     [...document.querySelectorAll(".gallery__item")].forEach((item, pos) =>
         // items.push(new Item(item, previews[pos]))
-
         // dynamic preview
         items.push(new Item(item, previews[0]))
     );
