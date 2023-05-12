@@ -106,7 +106,7 @@
     margin: 0;
     /*font-size: 4rem;*/
     /*font-size: clamp(2rem,5vw,4rem);*/
-    font-size: clamp(2rem);
+    font-size: clamp(2rem, 2.2rem, 2.5rem);
     /*color: var(--color-gallery-title);*/
 }
 
