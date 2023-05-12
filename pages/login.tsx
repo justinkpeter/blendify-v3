@@ -43,7 +43,10 @@ export default function Login({providers}:any) {
                     <div className={"flex mt-16"}>
                         <button
                             className={"py-6 px-12 w-fit rounded-full bg-green-500 font-medium transition text-lg hover:bg-green-800 flex items-center gap-4"}
-                            onClick={() => signIn(providers.spotify.id, { callbackUrl: '/'})}
+                            onClick={(e) => {
+                                e.preventDefault()
+                                signIn(providers.spotify.id, { callbackUrl: '/'}
+                            )}}
                         >
                             <Image src={'/assets/logo/Spotify_Icon_RGB_White.png'} alt={'Spotify'} width={30} height={30}/>
                             <span> Continue with Spotify </span>
