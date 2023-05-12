@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 export const AudioFeature = ({feature, value, Icon}: {feature:any, value:any, Icon:any}) => {
 
