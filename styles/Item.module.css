@@ -72,6 +72,7 @@
 }
 
 .gallery__item-caption {
+    overflow:hidden;
     grid-area: 1 / 1 / 4 / 3;
     display: grid;
     /*grid-template-areas: 'gallery-number gallery-title'*/
@@ -104,7 +105,8 @@
     grid-area: gallery-title;
     margin: 0;
     /*font-size: 4rem;*/
-    font-size: clamp(2rem,5vw,4rem);
+    /*font-size: clamp(2rem,5vw,4rem);*/
+    font-size: clamp(2rem);
     color: var(--color-gallery-title);
 }
 

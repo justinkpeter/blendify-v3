@@ -3,7 +3,6 @@ import { Item } from "./item";
 import { Preview } from "./preview";
 
 
-
 export async function initTransition() {
 
 
@@ -28,14 +27,23 @@ export async function initTransition() {
     // Item instances array
     const items = [];
     [...document.querySelectorAll(".gallery__item")].forEach((item, pos) =>
-        items.push(new Item(item, previews[pos]))
+        // items.push(new Item(item, previews[pos]))
+
+        // dynamic preview
+        items.push(new Item(item, previews[0]))
     );
 
 
+
     const openItem = (item) => {
+
+        console.log('opening item')
         // disable horizontal locomotive scroll
         // console.log("frame", frameEl);
         // console.log("console", console);
+
+        // disable document scroll
+        document.body.style.overflow = "hidden";
 
         gsap
             .timeline({
@@ -93,10 +101,13 @@ export async function initTransition() {
                 for (const line of item.preview.multiLines) {
                     line.in();
                 }
-                gsap.set(item.preview.DOM.multiLineWrap, {
-                    opacity: 1,
-                    delay: 0.1,
-                });
+
+                if(item.preview.multiLines.length > 0) {
+                    gsap.set(item.preview.DOM.multiLineWrap, {
+                        opacity: 1,
+                        delay: 0.1,
+                    });
+                }
             }, "content")
             // animate frame element
             // .to(
@@ -205,6 +216,10 @@ export async function initTransition() {
                 },
                 "grid"
             );
+
+
+        // allow document to scroll again
+        document.body.style.overflow = "auto";
     };
 
 
@@ -216,3 +231,6 @@ export async function initTransition() {
         item.preview.DOM.backCtrl.addEventListener("click", () => closeItem(item));
     }
 }
+
+
+

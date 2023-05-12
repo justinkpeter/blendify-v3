@@ -28,6 +28,12 @@
   }
 }
 
+body {
+  overscroll-behavior: none;
+  height: 100vh;
+}
+
+
 /*------------------------------------*/
 /*------------------------------------*/
 /*------------------------------------*/
@@ -140,9 +146,14 @@
   grid-area: gallery-title;
   margin: 0;
   font-size: 4rem;
-  font-size: clamp(2rem,5vw,4rem);
+  /*font-size: clamp(2rem,5vw,4rem);*/
+  font-size:3vw;
   mix-blend-mode: difference;
   color: white;
+  /*overflow: hidden;*/
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
 }
 
 .gallery__item-number,
@@ -305,6 +316,30 @@ html.has-scroll-dragging {
 /* --------------------------------------*/
 /* --------------------------------------*/
 
+#scrollable::-webkit-scrollbar {
+  /* position*/
+  width: 0.1rem;
+  height: 10em;
+  /*background-color: rgba(245, 245, 245, 0.24);*/
+
+  /*     padding */
+
+}
+
+#scrollable::-webkit-scrollbar-track {
+  /* position*/
+  /*height: 10vh;*/
+  background-color: rgba(245, 245, 245, 0.24);
+  margin: 8vh;
+
+  /*border-radius: 0.5rem;*/
+}
+
+#scrollable::-webkit-scrollbar-thumb {
+  /* position*/
+  background-color: #22c55e;
+  border-radius: 0.5rem;
+}
 .oh {
   position: relative;
   overflow: hidden;
@@ -314,16 +349,24 @@ html.has-scroll-dragging {
 
 .oh__inner {
   will-change: transform;
-  display: inline-block;
+  /*display: inline-block;*/
   white-space: normal;
   text-align: left;
 }
  .oh__inner.genre{
    border-radius: 500px;
-   background-color: rgba(215, 23, 23, 0.3);
+   background-color: rgba(0, 0, 0, 0.3);
    width: fit-content;
-   padding: 0 25px
+   padding: 0.5rem 1rem;
  }
+.oh__inner.top__tracks{
+  overflow-x: scroll;;
+  display: inline-flex;
+  /*border-radius: 500px;*/
+  /*background-color: rgba(215, 23, 23, 0.3);*/
+  width: fit-content;
+  padding: 0 25px
+}
 
 .line {
   transform-origin: 0 50%;
@@ -368,14 +411,14 @@ html.has-scroll-dragging {
 
 a {
   text-decoration: none;
-  color: var(--color-link);
+  /*color: var(--color-link);*/
   outline: none;
   white-space: nowrap;
   overflow: hidden;
   position: relative;
 }
 
-a:not(.frame__title-back):not(.item__link)::before {
+a:not(.frame__title-back):not(.item__link):not(.preview__uri):not(.social__icon)::before {
   content: "";
   height: 1px;
   width: 100%;
@@ -392,7 +435,7 @@ a:not(.frame__title-back):not(.item__link):hover::before {
 }
 
 a:hover {
-  color: var(--color-link-hover);
+  /*color: var(--color-link-hover);*/
   outline: none;
 }
 
@@ -401,7 +444,7 @@ a:hover {
 }
 
 .preview-visible a:hover {
-  color: var(--color-link-hover-alt);
+  /*color: var(--color-link-hover-alt);*/
 }
 
 /* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
@@ -422,7 +465,7 @@ a:focus-visible {
   /* Draw a very noticeable focus style for
 	 keyboard-focus on browsers that do support
 	 :focus-visible */
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
   background: transparent;
 }
 
@@ -569,9 +612,11 @@ a:focus-visible {
 }
 
 .overlay__row {
-  background: var(--color-overlay);
+  /*background: var(--color-overlay);*/
+  background-color: rgba(255, 255, 255, 0.1);
   transform: scaleY(0);
   will-change: transform;
+  backdrop-filter: blur(40px);
 }
 
 .overlay__row:first-child {
@@ -603,7 +648,7 @@ a:focus-visible {
   width: 100%;
   height: 100%;
   top: 0;
-  padding: 6rem;
+  padding: 5rem;
 
   /*padding: 5vw 10vh;*/
   color: var(--color-text-alt);
@@ -613,17 +658,33 @@ a:focus-visible {
   justify-content: center;
 }
 
+.metadata{
+  padding-right: 2vh
+}
+
 
 .preview-container{
   display: flex;
   width: 100%;
   height: 100%;
   gap: 5rem;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   position: relative;
-  padding-top: 5vh;
+  /*padding-top: 5vh;*/
+  padding: 5vh 5vh;
   /*max-width: 1536px;*/
   max-width: 1800px;
+  overflow: hidden;
+}
+
+@media (min-width: 2440px) {
+    .preview-container{
+
+      /*position: fixed;*/
+      top: 0;
+      /*margin-top: 5vh;*/
+      overflow: hidden;
+    }
 }
 
 .preview--current {
@@ -660,9 +721,9 @@ a:focus-visible {
 .preview__title {
   /*margin: 2rem 0;*/
   line-height: 0.7;
-  font-size: clamp(2rem, 5vw, 15rem);
+  font-size: clamp(2rem, 5vw, 8.5rem);
   /*font-size: 12vh;*/
-  left: -1%;
+  /*left: -1%;*/
   /*white-space: nowrap;*/
   font-family:  sans-serif;
   font-weight: 600;
