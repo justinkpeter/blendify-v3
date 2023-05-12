@@ -4,7 +4,6 @@ import {useSession} from "next-auth/react";
 import {useEffect,  useState} from "react";
 import {initTransition} from "@/utils";
 import {SectionTitle} from "@/components/stats/SectionTitle";
-import { MicrophoneIcon } from "@heroicons/react/20/solid";
 
 
 export const FavoriteArtists = () => {

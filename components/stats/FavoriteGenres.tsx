@@ -1,7 +1,6 @@
 import useSpotify from "@/utils/useSpotify";
 import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
-import {SectionTitle} from "@/components/stats/SectionTitle";
 
 const GenreBar = ({percentage, color, name}) => {
     return (
@@ -24,8 +23,6 @@ const GenreBar = ({percentage, color, name}) => {
 export const FavoriteGenres = () => {
     const spotifyApi = useSpotify()
     const {data: session} = useSession()
-    const [topArtists, setTopArtists] = useState([])
-    const [sectionWidth, setSectionWidth] = useState(0)
     const shortTermTopGenres = []
     const genreFrequency = {}
     const [topGenres, setTopGenres] = useState([])
@@ -33,7 +30,6 @@ export const FavoriteGenres = () => {
     useEffect(() => {
         if(spotifyApi.getAccessToken()) {
             spotifyApi.getMyTopArtists({limit: 50, time_range:'short_term'}).then((data) => {
-                setTopArtists(data.body.items)
                 // iterate through each artist and extract their genres
                 data.body.items.forEach((artist) => {
                     artist.genres.forEach((genre) => {

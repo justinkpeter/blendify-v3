@@ -16,7 +16,7 @@ export const Item = ({index, name, img, id}) => {
                     <div className={"gallery__item-imginner"} style={{backgroundImage: `url(${img ?? ''}`}}></div>
                 </div>
                 <figcaption className={"gallery__item-caption"}>
-                    <h2 className={"gallery__item-title"} data-scroll data-scroll-speed="1">{name ?? ''}</h2>
+                    <h2 className={"gallery__item-title"}>{name ?? ''}</h2>
                     <span className={"gallery__item-number"} style={{WebkitTextStrokeColor: 'white'}}>
                         0{parseInt(index) + 1}
                     </span>

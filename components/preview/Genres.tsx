@@ -3,7 +3,7 @@ export const Genres = ({data}) => {
     return (
         <>
             <div className={'oh flex flex-wrap gap-2 mt-4 w-full'}>
-                { data?.map((genre, index) => {
+                { data?.map((genre) => {
                     return (
                         <div className="oh__inner genre" key={genre}> {genre} </div>
                     )

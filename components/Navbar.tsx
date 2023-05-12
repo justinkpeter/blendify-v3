@@ -1,7 +1,7 @@
 import {signOut, useSession} from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
-import { ArrowsPointingOutIcon, ArrowsPointingInIcon, ArrowLeftOnRectangleIcon, SpeakerXMarkIcon, SpeakerWaveIcon, ShareIcon  } from "@heroicons/react/24/solid";
+import { ArrowsPointingOutIcon, ArrowsPointingInIcon, ArrowLeftOnRectangleIcon, SpeakerXMarkIcon, SpeakerWaveIcon  } from "@heroicons/react/24/solid";
 
 
 function useMenuAnimation(isOpen: boolean) {

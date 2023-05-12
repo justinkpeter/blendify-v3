@@ -1,8 +1,5 @@
 import React, {useEffect} from "react";
-import { itemSelectedState } from "@/atoms/itemAtom";
-import { artistState } from "@/atoms/artistAtom";
 import {CarouselItem} from "@/components/CarouselItem";
-import {useRecoilValue} from "recoil";
 import { useState } from "react";
 import {ArrowLongLeftIcon, ArrowLongRightIcon} from "@heroicons/react/24/solid";
 

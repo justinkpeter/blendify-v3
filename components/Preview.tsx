@@ -1,5 +1,4 @@
 import {
-    HeartIcon,
     SparklesIcon,
     UserGroupIcon,
     MusicalNoteIcon,
@@ -9,16 +8,15 @@ import {
     ChatBubbleLeftRightIcon,
     FaceSmileIcon, ForwardIcon
 } from "@heroicons/react/20/solid";
-import {CarouselItem} from "@/components/CarouselItem";
 import React, {useEffect, useState} from "react";
 import {useRecoilValue} from "recoil";
-import {artistIdState, artistState} from "@/atoms/artistAtom";
+import { artistState} from "@/atoms/artistAtom";
 import { itemSelectedState} from "@/atoms/itemAtom";
 import {Genres} from "@/components/preview/Genres";
 import spotifyApi from "@/lib/spotify";
 import {Carousel} from "@/components/preview/Carousel";
 import {StatCard} from "@/components/preview/StatCard";
-import { numberWithCommas, getPopularity, getArtistAlbumSingleCount, convertArtistReleaseDate } from "@/utils/functions";
+import { getPopularity, getArtistAlbumSingleCount, convertArtistReleaseDate } from "@/utils/functions";
 import {trackState} from "@/atoms/trackAtom";
 import {AudioFeature} from "@/components/preview/AudioFeauture";
 
@@ -28,7 +26,6 @@ export const Preview = () => {
     const artist = useRecoilValue(artistState)
     const track = useRecoilValue(trackState)
     const itemSelected = useRecoilValue(itemSelectedState)
-    const [previewUri, setPreviewUri] = useState(itemSelected?.uri)
 
 
     const [artistMetaData, setArtistMetaData] = useState({

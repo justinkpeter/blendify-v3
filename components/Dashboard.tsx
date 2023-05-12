@@ -1,11 +1,8 @@
 import React, { useRef, useState, useLayoutEffect, useCallback, forwardRef } from "react";
 import ResizeObserver from "resize-observer-polyfill"
 import { motion, useTransform, useSpring, useScroll} from "framer-motion"
-// import {LoadingSpinner} from "./components/LoadingSpinner";
 import {Navbar} from "@/components/Navbar";
-import {HeartIcon} from "@heroicons/react/20/solid";
-import {CarouselItem} from "@/components/CarouselItem";
-import {useRecoilState, useRecoilValue} from "recoil";
+import { useRecoilValue} from "recoil";
 import { artistIdState } from "@/atoms/artistAtom";
 import {Footer} from "@/components/Footer";
 import { Preview } from "@/components/Preview";
@@ -72,25 +69,6 @@ export const Dashboard = ({children}) => {
     );
     const physics = { damping: 15, mass: 0.27, stiffness: 55 };
     const spring = useSpring(transform, physics);
-
-    const artistId = useRecoilValue(artistIdState)
-    // console.log('artistId', artistId)
-
-
-
-
-    const LoadingScreen = () => {
-        return(
-            <div className={'relative h-screen w-screen'}>
-                loading....
-                {/*<LoadingSpinner/>*/}
-            </div>
-        )
-    }
-
-    // console.log('artistId', artistIdState)
-
-
 
 
     return (
