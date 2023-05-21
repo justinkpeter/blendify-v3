@@ -45,7 +45,7 @@ export default function Login({providers}:any) {
                             className={"py-6 px-12 w-fit rounded-full bg-green-500 font-medium transition text-lg hover:bg-green-800 flex items-center gap-4"}
                             onClick={(e) => {
                                 e.preventDefault()
-                                signIn(providers.spotify.id, { callbackUrl: '/'}
+                                signIn(providers?.spotify?.id, { callbackUrl: '/'}
                             )}}
                         >
                             <Image src={'/assets/logo/Spotify_Icon_RGB_White.png'} alt={'Spotify'} width={30} height={30}/>
