@@ -89,7 +89,7 @@ export const Navbar = () => {
                 <header className={'flex w-full pl-10  justify-between'}>
                     <div className={'flex uppercase pt-3 gap-2.5 h-fit cursor-pointer '}>
                         <div className={''}> blendify </div>
-                        <a className={' hover:text-white/40'}> github  </a>
+                        <a className={' hover:text-white/40'} href={'https://github.com/justinkpeter/blendify-v3'} rel="noopener noreferrer" target="_blank"> github  </a>
 
                     </div>
                    <div>
@@ -116,9 +116,8 @@ export const Navbar = () => {
                            className={'flex flex-col gap-2 bg-black/70 cursor-pointer py-2 my-2  '}
                        >
                            <li className={'block pl-2.5 py-1 hover:text-white/50 flex items-center gap-3 '} onClick={fullScreen}>
-                               { !isFullscreen ?
-                                   <ArrowsPointingOutIcon className={'w-5 h-5'}/> :
-                                   <ArrowsPointingInIcon className={'w-5 h-5'}/> } Enter fullscreen
+                               { !isFullscreen ? <ArrowsPointingOutIcon className={'w-5 h-5'}/> : <ArrowsPointingInIcon className={'w-5 h-5'}/> }
+                               { !isFullscreen ? 'Enter fullscreen' : 'Exit fullscreen'}
                            </li>
                            <li className={'block pl-2.5 py-1 hover:text-white/50 flex items-center gap-3'} onClick={handleMute}>
                                { !isMuted ? <SpeakerWaveIcon className={'w-5 h-5'}/> : <SpeakerXMarkIcon className={'w-5 h-5'}/> }
