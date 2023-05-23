@@ -140,13 +140,12 @@ export const Preview = () => {
                     seed_tracks: track?.id,
                     limit: 10,
                 }).then((data:any) => {
-                    setArtistMetaData((prevMetaData) => ({
+                    setTrackMetaData((prevMetaData) => ({
                         ...prevMetaData,
                         relatedTracks: data.body.tracks
                     }));
                 })
             })
-
         }
 
     }, [artist, track, itemSelected])
@@ -233,7 +232,7 @@ export const Preview = () => {
                                             </div>
                                         }
                                         { itemSelected ==='artist' && <Carousel title={'Related Artists' } data={artistMetaData.relatedArtists?.slice(0,8)} id={'carousel-related-artists'} />}
-                                        { itemSelected ==='track' && <Carousel title={'Related Tracks' } data={artistMetaData.relatedTracks?.slice(0,8)} id={'carousel-related-tracks'} />}
+                                        { itemSelected ==='track' && <Carousel title={'Related Tracks' } data={trackMetaData.relatedTracks?.slice(0,8)} id={'carousel-related-tracks'} />}
                                     </div>
                                 </div>
 
