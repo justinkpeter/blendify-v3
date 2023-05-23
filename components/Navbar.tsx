@@ -2,6 +2,7 @@ import {signOut, useSession} from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { ArrowsPointingOutIcon, ArrowsPointingInIcon, ArrowLeftOnRectangleIcon, SpeakerXMarkIcon, SpeakerWaveIcon  } from "@heroicons/react/24/solid";
+import { getInitials } from "@/utils/functions";
 
 
 function useMenuAnimation(isOpen: boolean) {
@@ -38,6 +39,8 @@ function useMenuAnimation(isOpen: boolean) {
 }
 
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
+
+
 
 
 
@@ -82,6 +85,16 @@ export const Navbar = () => {
         })
     }
 
+    const ProfilePic = (): any => {
+        return(
+            <>
+                { session?.user?.image && <img className={'rounded-full w-12 h-12 object-cover'} src={session?.user?.image || ''} alt=""/> }
+                { !session?.user?.image && <div className={'w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center text-xl font-bold'}> { getInitials(session?.user?.name) } </div> }
+            </>
+        )
+    }
+
+
 
     return (
         <>
@@ -97,10 +110,11 @@ export const Navbar = () => {
                            onClick={() => setIsOpen(!isOpen)}
                            whileTap={{ scale: 0.97 }}
                            className={'flex space-x-3 opacity-90 hover:opacity-80 items-center text-white bg-black/30 cursor-pointer rounded-full p-1 pr-4'}>
-                           <img
-                               className={'rounded-full w-12 h-12 object-cover'}
-                               src={session?.user?.image || ''}
-                               alt=""/>
+                           {/*<img*/}
+                           {/*    className={'rounded-full w-12 h-12 object-cover'}*/}
+                           {/*    src={session?.user?.image || ''}*/}
+                           {/*    alt=""/>*/}
+                           <ProfilePic/>
                            <h2> { session?.user?.name }</h2>
                            <div className="arrow w-fit " style={{ transformOrigin: "50% 55%" }}>
                                <svg width="15" height="15" viewBox="0 0 20 20" >
