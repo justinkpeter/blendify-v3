@@ -16,7 +16,7 @@ import {Genres} from "@/components/preview/Genres";
 import spotifyApi from "@/lib/spotify";
 import {Carousel} from "@/components/preview/Carousel";
 import {StatCard} from "@/components/preview/StatCard";
-import { getPopularity, getArtistAlbumSingleCount, convertArtistReleaseDate } from "@/utils/functions";
+import {getPopularity, getArtistAlbumSingleCount, convertArtistReleaseDate, numberWithCommas} from "@/utils/functions";
 import {trackState} from "@/atoms/trackAtom";
 import {AudioFeature} from "@/components/preview/AudioFeauture";
 
@@ -174,7 +174,6 @@ export const Preview = () => {
                                 <div
                                     className="preview__img-inner drop-shadow-2xl"
                                     style={{backgroundImage:
-
                                             `url(${itemSelected === "artist" ? 
                                                 artist.images[0]?.url || '' : 
                                                 track?.album?.images[0]?.url || ''})`}}>
@@ -210,12 +209,12 @@ export const Preview = () => {
                                     <div className="oh__inner ">
                                         <div className={'flex my-6'}>
                                             { itemSelected ==='artist' && <StatCard title={'Popularity'} value={getPopularity(artist?.popularity)} Icon={SparklesIcon}/>}
-                                            { itemSelected ==='artist' && <StatCard title={'Followers'} value={getPopularity(artist?.followers)} Icon={UserGroupIcon}/>}
+                                            { itemSelected ==='artist' && <StatCard title={'Followers'} value={numberWithCommas(artistMetaData?.followers)} Icon={UserGroupIcon}/>}
                                             { itemSelected ==='track' && <StatCard title={'Popularity'} value={getPopularity(trackMetaData?.popularity)} Icon={SparklesIcon}/>}
                                             { itemSelected ==='track' && <StatCard title={'Release Date'} value={convertArtistReleaseDate(trackMetaData?.releaseDate)} Icon={ChevronDoubleUpIcon}/>}
                                             {/*<StatCard title={'Followers'} value={numberWithCommas(artistMetaData?.followers)} Icon={UserGroupIcon}/>*/}
                                         </div>
-                                    { <Carousel title={'Top Tracks' } data={artistMetaData.topTracks?.slice(0,8)} id={'carousel-top-tracks'}/>}
+                                    { itemSelected === 'artist' && <Carousel title={'Top Tracks' } data={artistMetaData.topTracks?.slice(0,8)} id={'carousel-top-tracks'}/>}
                                     </div>
                                     <div className="oh__inner ">
                                         <div className={'flex my-6'}>
@@ -234,7 +233,7 @@ export const Preview = () => {
                                             </div>
                                         }
                                         { itemSelected ==='artist' && <Carousel title={'Related Artists' } data={artistMetaData.relatedArtists?.slice(0,8)} id={'carousel-related-artists'} />}
-                                        {/*{ itemSelected ==='track' && <Carousel title={'Related Tracks' } data={artistMetaData.relatedTracks?.slice(0,8)} id={'carousel-related-tracks'} />}*/}
+                                        { itemSelected ==='track' && <Carousel title={'Related Tracks' } data={artistMetaData.relatedTracks?.slice(0,8)} id={'carousel-related-tracks'} />}
                                     </div>
                                 </div>
 
