@@ -29,12 +29,6 @@ export default function Login({providers}:any) {
         };
     }, [vantaEffect]);
 
-    const showLogin = () => {
-        // e.preventDefault()
-        console.log('window.location.href', window.location.href)
-        console.log('window.location.origin', window.location.origin)
-        console.log('providers', providers)
-    }
 
     return (
         <>
@@ -52,7 +46,6 @@ export default function Login({providers}:any) {
                             className={"py-6 px-12 w-fit rounded-full bg-green-500 font-medium transition text-lg hover:bg-green-800 flex items-center gap-4"}
                             onClick={(e) => {
                                 e.preventDefault()
-                                showLogin()
                                 signIn(providers?.spotify?.id, { callbackUrl: '/'}
 
                             )}}
