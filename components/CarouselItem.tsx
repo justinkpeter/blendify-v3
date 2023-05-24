@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from "react";
 export const CarouselItem = ({item}:any) => {
+
     return (
         <>
             <div className={'w-fit h-fit relative p-3 rounded-lg backdrop-blur-xl bg-white/10 hover:bg-white/30 transition-all duration-100 ease-in-out group'}>
@@ -12,7 +13,9 @@ export const CarouselItem = ({item}:any) => {
                     </div>
                     <div className={'relative w-full flex  items-center  justify-between '}>
                         <div> {item?.name} </div>
-                        <Image src={'/assets/logo/Spotify_Icon_RGB_White.png'} alt={'Spotify'} width={30} height={30}/>
+                        <a className={'preview__uri'} href={item?.uri}>
+                           <Image src={'/assets/logo/Spotify_Icon_RGB_White.png'} alt={'Spotify'} width={30} height={30} className={''}/>
+                        </a>
                     </div>
                     <div className={'flex flex-wrap gap-1'}>
                         {item?.artists?.map((artist: any, index: number) => {
