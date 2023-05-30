@@ -37,21 +37,24 @@ import { gsap } from 'gsap';
         this.DOM.title = this.DOM.el.querySelector('.gallery__item-title');
         this.DOM.desc = this.DOM.el.querySelector('.gallery__item-number');
 
-        this.DOM.link.addEventListener('mouseenter', () => {
-            gsap.killTweensOf(this.DOM.imageInner);
-            gsap.to(this.DOM.imageInner, {
-                duration: 2,
-                ease: 'power4',
-                scale: 1.2
-            });
-        });
-        this.DOM.link.addEventListener('mouseleave', () => {
-            gsap.killTweensOf(this.DOM.imageInner);
-            gsap.to(this.DOM.imageInner, {
-                duration: 0.7,
-                ease: 'expo',
-                scale: 1
-            });
-        });
+
+        // removing zoom effect on hover
+
+        // this.DOM.link.addEventListener('mouseenter', () => {
+        //     gsap.killTweensOf(this.DOM.imageInner);
+        //     gsap.to(this.DOM.imageInner, {
+        //         duration: 2,
+        //         ease: 'power4',
+        //         scale: 1.2
+        //     });
+        // });
+        // this.DOM.link.addEventListener('mouseleave', () => {
+        //     gsap.killTweensOf(this.DOM.imageInner);
+        //     gsap.to(this.DOM.imageInner, {
+        //         duration: 0.7,
+        //         ease: 'expo',
+        //         scale: 1
+        //     });
+        // });
 	}
 }
